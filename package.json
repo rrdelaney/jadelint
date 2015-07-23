@@ -1,7 +1,13 @@
 {
-    "name": "jadelint",
-    "author": "Ryan Delaney",
-    "version": "0.0.0",
-    "description": "Finds bad practices in your Jade",
-    "main": "target/jadelint.js"
+  "name": "jadelint",
+  "author": "Ryan Delaney",
+  "version": "0.0.0",
+  "description": "Finds bad practices in your Jade",
+  "license": "MIT",
+  "main": "target/jadelint.js",
+  "keywords": ["jade", "lint"],
+  "dependencies": {
+    "jade-lexer": "0.0.8",
+    "jade-parser": "0.0.8"
+  }
 }
