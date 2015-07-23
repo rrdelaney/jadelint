@@ -3,9 +3,9 @@ class Rule
     FAILURE: 'FAILURE'
     IGNORE: 'IGNORE'
 
-    constructor: (@name) ->
-        console.log "RUNNING RULE #{@name}"
-        @level = @IGNORE
+    name = 'Generic Rule'
+    filename = 'Generic Filename'
+    lineNumber = 'Generic LineNo'
 
     setLevel: (level) ->
         @level = switch level
@@ -14,12 +14,12 @@ class Rule
             when @IGNORE then @IGNORE
             else @level
 
-    fail: (message) ->
-        err = new Error "#{message} at #{@filename}:#{@lineNumber}"
+    fail: ->
+        err = new Error "#{@name} at #{@filename}:#{@lineNumber}"
         err.name = @level
         throw err
 
-    check: (node, @filename, @lineNumber) ->
+    check: (node) ->
         false
 
 module.exports = Rule

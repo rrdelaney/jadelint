@@ -3,12 +3,13 @@ Linter = require './Linter'
 
 module.exports = jadelint = (filename) ->
     fs.readFile filename, (err, data) ->
-        if err then throw new Error err
-        linter = new Linter filename, data
+        if err then throw err
+        linter = new Linter filename, data.toString()
         errors = linter.lint()
+        console.log errors
         exitCode = parseErrors errors
 
-        exitCode
+        if exitCode isnt 0 then process.exit 1
 
 parseErrors = (errors) ->
     exitCode = 0

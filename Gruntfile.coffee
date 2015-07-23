@@ -29,7 +29,7 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-clean'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
 
-    grunt.registerTask 'dist', ['clean:dist', 'coffeelint:dist', 'coffee:dist']
+    grunt.registerTask 'dist', ['coffeelint:dist', 'coffee:dist']
 
     grunt.registerTask 'default', ['dist']
 

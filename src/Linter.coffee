@@ -1,16 +1,19 @@
 lex = require 'jade-lexer'
-parser = require 'jade-parser'
+parse = require 'jade-parser'
 rules = require './rules'
 
 class Linter
     constructor: (@filename, @source) ->
-        tokens = lex @source, @filename
-        @ast = parser tokens
+        @ast = parse lex @source, @filename
 
-    lint: ->
+    lint: (root = @ast) ->
         errors = []
-        for node in @ast
-            errors.concat rules.checkAll node
+        for node in root.nodes
+            errors = errors.concat rules.checkAll node
+            if node.block?
+                errors = errors.concat @lint node.block
+            if node.nodes?
+                errors = errors.concat @lint subnode for subnode in node.nodes
 
         errors
 

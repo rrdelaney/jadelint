@@ -3,9 +3,10 @@ exports.rules = rules =
 
 exports.checkAll = checkAll = (node, filename, lineNumber) ->
     errors = []
-    for name, rule in rules
+    for name, rule of rules
         try
-            rule.lint node, filename, lineNumber
+            rule = new rule(filename, lineNumber)
+            rule.check node
         catch e
             errors.push e
 
