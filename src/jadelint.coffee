@@ -24,7 +24,7 @@ parseErrors = (errors) ->
             when 'IGNORE'
                 undefined
             else
-                console.log "ERROR: #{err.message}"
+                console.log "ERROR: #{err}"
                 exitCode = 1
 
     if exitCode is 0 and not warning then console.log "Good job :)"

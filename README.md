@@ -37,3 +37,8 @@ An attribute cannot be namespaced with `namespace:attribute`
 __default__ IGNORE
 
 Don't use `role=".."` on `nav`, `hr`, or `br`
+
+### HTMLRootRequiresLang
+__default__ FAILURE
+
+The root `html` element must have a `lang` attribute
