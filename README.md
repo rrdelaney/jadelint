@@ -97,3 +97,9 @@ meta(charset='UTF-8')
 //- Invalid
 meta(charset='UFT8')
 meta(charset='OtherSet')
+```
+
+### OmitTypeForCSS
+__default__ WARNING
+
+Don't do `style(type='text/css')`
