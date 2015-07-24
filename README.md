@@ -103,3 +103,8 @@ meta(charset='OtherSet')
 __default__ WARNING
 
 Don't do `style(type='text/css')`
+
+### DontUseHgroup
+__default__ FAILURE
+
+Don't use an `hgroup` tag
