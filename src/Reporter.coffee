@@ -24,9 +24,11 @@ class Reporter
                 chalk.blue name
             ]
 
-        @log += '\n\n\n'
+        @log += '\n'
 
     report: ->
+        @log += '\n'
+
         if @warnCount > 0
             @log += chalk.yellow "#{symbol.warning}  #{@warnCount} warning#{if @warnCount isnt 1 then 's' else ''}\n"
 
@@ -38,6 +40,8 @@ class Reporter
             problems = false
         else
             problems = true
+
+        @log += '\n'
 
         console.log @log
         if problems then 1 else 0
