@@ -3,12 +3,20 @@ parse = require 'jade-parser'
 rules = require './rules'
 
 class Linter
-    constructor: (@filename, @source) ->
-        @ast = parse lex @source, @filename
+    constructor: (@filename, @source, @config =  {})->
+        try
+            @ast = parse lex @source, @filename
+        catch e
+            console.log "There was an error compiling #{@filename}:"
+            console.log "    #{e.message}"
+            process.exit 1
+
+        rules[rule]::level = level for rule, level of @config
 
     lint: (root = @ast) ->
         errors = []
         for node in root.nodes
+            console.log node
             errors = errors.concat rules.checkAll @filename, node
             if node.block?
                 errors = errors.concat @lint node.block
