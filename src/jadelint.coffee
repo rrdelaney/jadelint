@@ -2,8 +2,8 @@ fs = require 'fs'
 Linter = require './Linter'
 Reporter = require './Reporter'
 
-module.exports = jadelint = (args) ->
-    reporter = new Reporter()
+module.exports = jadelint = (args, reporter) ->
+    reporter ?= new Reporter()
 
     lintFiles = (filenames, callback) ->
         filename = filenames.pop()
