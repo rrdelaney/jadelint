@@ -8,7 +8,8 @@ module.exports = jadelint = (filename) ->
         linter = new Linter filename, data.toString()
         errors = linter.lint()
 
-        reporter = new Reporter errors, filename
+        reporter = new Reporter()
+        reporter.aggregate errors, filename
         exitCode = reporter.report()
 
         if exitCode isnt 0 then process.exit exitCode
