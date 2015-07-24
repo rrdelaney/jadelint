@@ -2,22 +2,15 @@ fs = require 'fs'
 Linter = require './Linter'
 Reporter = require './Reporter'
 
-module.exports = jadelint = (args, reporter) ->
+module.exports = jadelint = (filenames, reporter) ->
     reporter ?= new Reporter()
 
-    lintFiles = (filenames, callback) ->
-        filename = filenames.pop()
-        if not filename?
-            callback()
-        else
-            fs.readFile filename, (err, data) ->
-                if err then throw err
-                linter = new Linter filename, data.toString()
-                errors = linter.lint()
+    for filename in filenames
+        contents = fs.readFileSync filename
+        linter = new Linter filename, contents.toString()
+        errors = linter.lint()
 
-                reporter.aggregate errors, filename
-                lintFiles filenames, callback
+        reporter.aggregate errors, filename
 
-    lintFiles args, ->
-        exitCode = reporter.report()
-        if exitCode isnt 0 then process.exit exitCode
+    exitCode = reporter.report()
+    if exitCode isnt 0 then process.exit exitCode
