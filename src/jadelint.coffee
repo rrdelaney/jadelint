@@ -6,19 +6,22 @@ module.exports = jadelint = (filename) ->
         if err then throw err
         linter = new Linter filename, data.toString()
         errors = linter.lint()
-        console.log errors
         exitCode = parseErrors errors
 
-        if exitCode isnt 0 then process.exit 1
+        if exitCode isnt 0 then process.exit exitCode
 
 parseErrors = (errors) ->
     exitCode = 0
+    warning = false
     for err in errors
         switch err.name
             when 'WARNING'
                 console.log "#{err.name}: #{err.message}"
+                warning = true
             when 'FAILURE'
                 console.log "#{err.name}: #{err.message}"
                 exitCode = 1
+
+    if exitCode is 0 and not warning then console.log "Good job :)"
 
     exitCode

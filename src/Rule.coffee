@@ -6,6 +6,9 @@ class Rule
     name = 'Generic Rule'
     filename = 'Generic Filename'
     lineNumber = 'Generic LineNo'
+    level = @IGNORE
+
+    constructor: (@filename, @node) ->
 
     setLevel: (level) ->
         @level = switch level
@@ -15,7 +18,7 @@ class Rule
             else @level
 
     fail: ->
-        err = new Error "#{@name} at #{@filename}:#{@lineNumber}"
+        err = new Error "#{@name} at #{@filename}:#{@node.line}"
         err.name = @level
         throw err
 

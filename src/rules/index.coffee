@@ -1,12 +1,12 @@
 exports.rules = rules =
     NoBTags: require './NoBTags'
 
-exports.checkAll = checkAll = (node, filename, lineNumber) ->
+exports.checkAll = checkAll = (filename, node) ->
     errors = []
     for name, rule of rules
         try
-            rule = new rule(filename, lineNumber)
-            rule.check node
+            rule = new rule(filename, node)
+            rule.check()
         catch e
             errors.push e
 
