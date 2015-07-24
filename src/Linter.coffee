@@ -7,16 +7,14 @@ class Linter
         try
             @ast = parse lex @source, @filename
         catch e
-            console.log "There was an error compiling #{@filename}:"
-            console.log "    #{e.message}"
-            process.exit 1
+            @compileError = e
 
         rules[rule]::level = level for rule, level of @config
 
     lint: (root = @ast) ->
+        if @compileError? then return [@compileError]
         errors = []
         for node in root.nodes
-            console.log node
             errors = errors.concat rules.checkAll @filename, node
             if node.block?
                 errors = errors.concat @lint node.block
