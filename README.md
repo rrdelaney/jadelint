@@ -121,3 +121,20 @@ blockquote: p This is a quote
 //- Invalid
 blockquote This is a quote
 ```
+
+### UseTypeForOl
+__default__ IGNORE
+
+Use a `type` attribute for `ol` tags
+
+```jade
+//- Valid
+ol(type='I')
+  li thing
+  li other
+
+//- Invalid
+ol
+  li thing
+  li other
+```
