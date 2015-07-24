@@ -1,7 +1,7 @@
 Rule = require './../Rule'
 
 class DontUseLegacyEncoding extends Rule
-    name: 'Dont use legacy encoding'
+    name: 'Dont use legacy encoding format'
     level: 'FAILURE'
 
     check: ->

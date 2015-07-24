@@ -84,3 +84,16 @@ __default__ FAILURE
 
 Don't use the `<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">`
 syntax for specifying charset
+
+### UseUTF8
+__default__ FAILURE
+
+Only use `UTF-8` as the `charset`
+
+```jade
+//- Valid
+meta(charset='UTF-8')
+
+//- Invalid
+meta(charset='UFT8')
+meta(charset='OtherSet')
