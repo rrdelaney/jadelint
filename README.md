@@ -3,11 +3,13 @@ Finds bad practices in your Jade
 
 # Rules
 
-### `OnlyHTMLDoctype`
+### OnlyHTMLDoctype
+__default__ FAILURE
 
 `doctype` can only be set to `doctype html`
 
-### `NoTagWhitespace`
+### NoTagWhitespace
+__default__ WARNING
 
 Attribute tags cannot contain edge whitespace
 
@@ -21,10 +23,17 @@ div(id='id  ')
 div(id='  id  ')
 div(id=" id")
 ```
-### `NoXMLTagNamespace`
+### NoXMLTagNamespace
+__default__ WARNING
 
 A tag cannot have an `xmlns` attribute
 
-### `NoXMLAttributeNamespace`
+### NoXMLAttributeNamespace
+__default__ WARNING
 
-An attribute cannot be namespaced with `namepspace:attribute`
+An attribute cannot be namespaced with `namespace:attribute`
+
+### PreferStrongNativeSemantics
+__default__ IGNORE
+
+Don't use `role=".."` on `nav`, `hr`, or `br`
