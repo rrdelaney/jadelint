@@ -43,7 +43,38 @@ __default__ FAILURE
 
 The root `html` element must have a `lang` attribute
 
+```jade
+//- Valid
+html(lang='en-US')
+html(lang='jp')
+
+//- Invalid
+html
+```
+
 ### DontLinkToFavicon
 __default__ WARNING
 
 Don't like directly to `favicon.ico`
+
+```jade
+//- Valid
+link(rel='icon' href='favicon96x96.png')
+link(rel='icon' href='favicon96x96.ico')
+
+//- Invalid
+link(rel='icon' href='favicon.ico')
+```
+
+### AddTitleToAlternateStylesheets
+__default__ WARNING
+
+Use a `title` attribute on alternate stylesheets
+
+```jade
+//- Valid
+link(href='my.css' rel='alternate stylesheet' title='Altsheet')
+
+//- Invalid
+link(href='my.css' rel='alternate stylesheet')
+```
