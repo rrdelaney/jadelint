@@ -42,3 +42,8 @@ Don't use `role=".."` on `nav`, `hr`, or `br`
 __default__ FAILURE
 
 The root `html` element must have a `lang` attribute
+
+### DontLinkToFavicon
+__default__ WARNING
+
+Don't like directly to `favicon.ico`
