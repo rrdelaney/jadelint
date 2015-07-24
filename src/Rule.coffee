@@ -17,12 +17,18 @@ class Rule
             when @IGNORE then @IGNORE
             else @level
 
+    check: (node) ->
+        false
+
     fail: ->
         err = new Error "#{@name} at #{@filename}:#{@node.line}"
         err.name = @level
         throw err
 
-    check: (node) ->
-        false
+    clean: (str) ->
+        str.replace /^'/g, ''
+           .replace /'$/g, ''
+           .replace /^"/g, ''
+           .replace /"$/g, ''
 
 module.exports = Rule
