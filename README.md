@@ -21,3 +21,10 @@ div(id='id  ')
 div(id='  id  ')
 div(id=" id")
 ```
+### `NoXMLTagNamespace`
+
+A tag cannot have an `xmlns` attribute
+
+### `NoXMLAttributeNamespace`
+
+An attribute cannot be namespaced with `namepspace:attribute`
