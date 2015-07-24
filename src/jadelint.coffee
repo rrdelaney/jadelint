@@ -21,6 +21,10 @@ parseErrors = (errors) ->
             when 'FAILURE'
                 console.log "#{err.name}: #{err.message}"
                 exitCode = 1
+            when 'IGNORE'
+                undefined
+            else
+                console.log "MISC: #{err.message}"
 
     if exitCode is 0 and not warning then console.log "Good job :)"
 
