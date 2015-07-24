@@ -108,3 +108,16 @@ Don't do `style(type='text/css')`
 __default__ FAILURE
 
 Don't use an `hgroup` tag
+
+### DontUsePlaintextInBlockquote
+__default__ IGNORE
+
+Don't use plaintext in a `blockquote` tag
+
+```jade
+//- Valid
+blockquote: p This is a quote
+
+//- Invalid
+blockquote This is a quote
+```
