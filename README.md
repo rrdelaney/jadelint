@@ -78,3 +78,9 @@ link(href='my.css' rel='alternate stylesheet' title='Altsheet')
 //- Invalid
 link(href='my.css' rel='alternate stylesheet')
 ```
+
+### DontUseLegacyEncoding
+__default__ FAILURE
+
+Don't use the `<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">`
+syntax for specifying charset
