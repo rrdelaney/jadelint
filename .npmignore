@@ -1,1 +1,3 @@
 src/
+Gruntfile.coffee
+node_modules/

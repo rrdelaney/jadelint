@@ -9,6 +9,9 @@
     "jade",
     "lint"
   ],
+  "files": [
+    "target"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/rrdelaney/jadelint.git"
