@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class PreferStrongNativeSemantics extends Rule
     name: 'Prefer strong native semantics'
-    level: 'IGNORE'
+    level: 'ignore'
 
     check: ->
         if @node.name in ['nav', 'hr', 'br']

@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class UseUTF8 extends Rule
     name: 'Only use UTF-8 as charset'
-    level: 'FAILURE'
+    level: 'error'
 
     check: ->
         if @node.name is 'meta'

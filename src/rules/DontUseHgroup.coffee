@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class DontUseHgroup extends Rule
     name: 'Dont use the hgroup tag'
-    level: 'FAILURE'
+    level: 'error'
 
     check: ->
         if @node.name is 'hgroup' then @fail()

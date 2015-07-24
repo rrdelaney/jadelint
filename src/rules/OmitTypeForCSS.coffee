@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class OmitTypeForCSS extends Rule
     name: 'Omit type attribute for CSS styles'
-    level: 'WARNING'
+    level: 'warning'
 
     check: ->
         if @node.name is 'style'

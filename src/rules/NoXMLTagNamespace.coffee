@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class NoXMLTagNamespace extends Rule
     name: 'No xmlns attribute allowed'
-    level: 'WARNING'
+    level: 'warning'
 
     check: ->
         for {name, val} in @node.attrs ? []

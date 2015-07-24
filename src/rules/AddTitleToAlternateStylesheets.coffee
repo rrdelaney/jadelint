@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class AddTitleToAlternateStylesheets extends Rule
     name: 'Add title to alternate stylesheet'
-    level: 'WARNING'
+    level: 'warning'
 
     check: ->
         if @node.name is 'link'

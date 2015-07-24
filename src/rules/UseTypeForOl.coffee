@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class UseTypeForOl extends Rule
     name: 'Use a type attribute for ol tags'
-    level: 'IGNORE'
+    level: 'ignore'
 
     check: ->
         if @node.name is 'ol'

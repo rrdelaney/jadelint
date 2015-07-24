@@ -4,12 +4,12 @@ Finds bad practices in your Jade
 # Rules
 
 ### OnlyHTMLDoctype
-__default__ FAILURE
+__default__ error
 
 `doctype` can only be set to `doctype html`
 
 ### NoTagWhitespace
-__default__ WARNING
+__default__ warning
 
 Attribute tags cannot contain edge whitespace
 
@@ -24,22 +24,22 @@ div(id='  id  ')
 div(id=" id")
 ```
 ### NoXMLTagNamespace
-__default__ WARNING
+__default__ warning
 
 A tag cannot have an `xmlns` attribute
 
 ### NoXMLAttributeNamespace
-__default__ WARNING
+__default__ warning
 
 An attribute cannot be namespaced with `namespace:attribute`
 
 ### PreferStrongNativeSemantics
-__default__ IGNORE
+__default__ ignore
 
 Don't use `role=".."` on `nav`, `hr`, or `br`
 
 ### HTMLRootRequiresLang
-__default__ FAILURE
+__default__ error
 
 The root `html` element must have a `lang` attribute
 
@@ -53,7 +53,7 @@ html
 ```
 
 ### DontLinkToFavicon
-__default__ WARNING
+__default__ warning
 
 Don't like directly to `favicon.ico`
 
@@ -67,7 +67,7 @@ link(rel='icon' href='favicon.ico')
 ```
 
 ### AddTitleToAlternateStylesheets
-__default__ WARNING
+__default__ warning
 
 Use a `title` attribute on alternate stylesheets
 
@@ -80,13 +80,13 @@ link(href='my.css' rel='alternate stylesheet')
 ```
 
 ### DontUseLegacyEncoding
-__default__ FAILURE
+__default__ error
 
 Don't use the `<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">`
 syntax for specifying charset
 
 ### UseUTF8
-__default__ FAILURE
+__default__ error
 
 Only use `UTF-8` as the `charset`
 
@@ -100,17 +100,17 @@ meta(charset='OtherSet')
 ```
 
 ### OmitTypeForCSS
-__default__ WARNING
+__default__ warning
 
 Don't do `style(type='text/css')`
 
 ### DontUseHgroup
-__default__ FAILURE
+__default__ error
 
 Don't use an `hgroup` tag
 
 ### DontUsePlaintextInBlockquote
-__default__ IGNORE
+__default__ ignore
 
 Don't use plaintext in a `blockquote` tag
 
@@ -123,7 +123,7 @@ blockquote This is a quote
 ```
 
 ### UseTypeForOl
-__default__ IGNORE
+__default__ ignore
 
 Use a `type` attribute for `ol` tags
 

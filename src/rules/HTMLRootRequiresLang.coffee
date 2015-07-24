@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class HTMLRootRequiresLang extends Rule
     name: 'HTML root requires a lang attribute'
-    level: 'FAILURE'
+    level: 'error'
 
     check: ->
         if @node.name is 'html'

@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class NoTagWhitespace extends Rule
     name: 'No Whitespace is allowed around attribute values'
-    level: 'WARNING'
+    level: 'warning'
 
     check: ->
         for {name, val} in @node.attrs ? []

@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class DontLinkToFavicon extends Rule
     name: 'Dont link to favicon.ico'
-    level: 'WARNING'
+    level: 'warning'
 
     check: ->
         if @node.name is 'link'

@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class DontUsePlaintextInBlockquote extends Rule
     name: 'Dont use plaintext in a blockquote tag'
-    level: 'IGNORE'
+    level: 'ignore'
 
     check: ->
         if @node.name is 'blockquote'

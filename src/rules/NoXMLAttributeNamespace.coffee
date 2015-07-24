@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class NoXMLAttributeNamespace extends Rule
     name: 'No namespacing of attributes attribute allowed'
-    level: 'WARNING'
+    level: 'warning'
 
     check: ->
         for {name, val} in @node.attrs ? []

@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class DontUseLegacyEncoding extends Rule
     name: 'Dont use legacy encoding format'
-    level: 'FAILURE'
+    level: 'error'
 
     check: ->
         if @node.type is 'meta'
