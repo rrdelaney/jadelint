@@ -12,7 +12,7 @@ class Reporter
         filename ?= errors[0]?.filename
 
         @log += if filename then "\n#{chalk.underline filename}\n" else ''
-        @log += table errors.map (err) =>
+        @log += table errors.filter((err) -> err.level isnt 'ignore').map (err) =>
             {level, name, filename, line} = err
             if level is 'error' then @errCount++
             if level is 'warning' then @warnCount++

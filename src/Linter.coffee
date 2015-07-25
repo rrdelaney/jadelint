@@ -3,13 +3,11 @@ parse = require 'jade-parser'
 rules = require './rules'
 
 class Linter
-    constructor: (@filename, @source, @config =  {})->
+    constructor: (@filename, @source)->
         try
             @ast = parse lex @source, @filename
         catch e
             @compileError = e
-
-        rules[rule]::level = level for rule, level of @config
 
     lint: (root = @ast) ->
         if @compileError? then return [@compileError]

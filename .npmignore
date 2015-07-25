@@ -1,3 +1,4 @@
 src/
 Gruntfile.coffee
 node_modules/
+jadelint.rc

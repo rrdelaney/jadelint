@@ -6,7 +6,7 @@ class NoTagWhitespace extends Rule
 
     check: ->
         for {name, val} in @node.attrs ? []
-            rawVal = @clean val             
+            rawVal = @clean val
             if rawVal isnt rawVal.trim() then @fail()
 
 module.exports = NoTagWhitespace

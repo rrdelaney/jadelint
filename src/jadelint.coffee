@@ -1,8 +1,14 @@
 fs = require 'fs'
 Linter = require './Linter'
 Reporter = require './Reporter'
+rules = require './rules'
 
 module.exports = jadelint = (filenames, reporter) ->
+    try
+        conf = JSON.parse fs.readFileSync '.jadelintrc'
+        try rules.rules[rule]::level = level for rule, level of conf
+        console.log rule, rules.rules[rule]::level for rule, level of conf
+
     reporter ?= new Reporter()
 
     for filename in filenames
