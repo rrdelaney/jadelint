@@ -1,3 +1,3 @@
-class LintError extends Error
+class LintError
 
 module.exports = LintError
