@@ -23,6 +23,7 @@ div(id='id  ')
 div(id='  id  ')
 div(id=" id")
 ```
+
 ### NoXMLTagNamespace
 __default__ warning
 

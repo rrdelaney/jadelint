@@ -3,6 +3,17 @@ Rule = require './../Rule'
 class AddTitleToAlternateStylesheets extends Rule
     name: 'Add title to alternate stylesheet'
     level: 'warning'
+    description: """
+    Use a `title` attribute on alternate stylesheets
+
+    ```jade
+    //- Valid
+    link(href='my.css' rel='alternate stylesheet' title='Altsheet')
+
+    //- Invalid
+    link(href='my.css' rel='alternate stylesheet')
+    ```
+    """
 
     check: ->
         if @node.name is 'link'
