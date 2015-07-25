@@ -1,3 +1,5 @@
+LintError = require './LintError'
+
 class Rule
     name = 'Generic Rule'
     filename = 'Generic Filename'
@@ -6,11 +8,11 @@ class Rule
 
     constructor: (@filename, @node) ->
 
-    check: (node) ->
+    check: ->
         false
 
     fail: ->
-        err = new Error()
+        err = new LintError()
         err.level = @level
         err.name = @name
         err.filename = @filename
@@ -22,5 +24,9 @@ class Rule
            .replace /'$/g, ''
            .replace /^"/g, ''
            .replace /"$/g, ''
+
+    validate: (node) ->
+        @node = node
+        @check()
 
 module.exports = Rule

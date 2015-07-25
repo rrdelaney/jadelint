@@ -10,12 +10,13 @@ class Reporter
 
     aggregate: (errors, filename) ->
         filename ?= errors[0]?.filename
+        fileErrCount = 0
+        fileWarnCount = 0
 
-        @log += if filename then "\n#{chalk.underline filename}\n" else ''
-        @log += table errors.filter((err) -> err.level isnt 'ignore').map (err) =>
+        errTable = table errors.filter((err) -> err.level isnt 'ignore').map (err) ->
             {level, name, filename, line} = err
-            if level is 'error' then @errCount++
-            if level is 'warning' then @warnCount++
+            if level is 'error' then fileErrCount++
+            if level is 'warning' then fileWarnCount++
 
             [
                 ''
@@ -24,6 +25,10 @@ class Reporter
                 chalk.blue name
             ]
 
+        if filename and fileErrCount > 0 or fileWarnCount > 0 then @log += "\n#{chalk.underline filename}\n" else ''
+        @errCount += fileErrCount
+        @warnCount += fileWarnCount
+        @log += errTable
         @log += '\n'
 
     report: ->
