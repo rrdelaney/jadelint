@@ -5,6 +5,7 @@
   "description": "Finds bad practices in your Jade",
   "license": "MIT",
   "main": "target/jadelint.js",
+  "bin": "bin/jadelint.js",
   "keywords": [
     "jade",
     "lint"
