@@ -1,5 +1,5 @@
 expect = require('chai').expect
-rule = require('./../../src/rules/').rules[require('path').basename(__filename, '.coffee')]
+rule = require "./../../src/rules/#{require('path').basename(__filename, '.coffee')}"
 
 describe 'UseFigCaptionAtStartOrEnd', ->
     it 'should catch figcaption in the middle', ->
