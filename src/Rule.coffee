@@ -29,6 +29,12 @@ class Rule
 
     validate: (nodeContent) ->
         @node = (parse lex nodeContent).nodes[0]
-        @check()
+
+        try
+            @check()
+        catch e
+            return false
+
+        return true
 
 module.exports = Rule
