@@ -1,3 +1,5 @@
+lex = require 'jade-lexer'
+parse = require 'jade-parser'
 LintError = require './LintError'
 
 class Rule
@@ -25,8 +27,8 @@ class Rule
            .replace /^"/g, ''
            .replace /"$/g, ''
 
-    validate: (node) ->
-        @node = node
+    validate: (nodeContent) ->
+        @node = (parse lex nodeContent).nodes[0]
         @check()
 
 module.exports = Rule

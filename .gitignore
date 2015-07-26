@@ -1,5 +1,6 @@
 node_modules/
 target/
+coverage/
 
 *.jade
 .jadelintrc
