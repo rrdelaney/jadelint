@@ -1,4 +1,6 @@
 src/
 Gruntfile.coffee
 node_modules/
-jadelint.rc
+coverage/
+doc/
+.jadelintrc

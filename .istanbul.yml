@@ -1,0 +1,4 @@
+reporting:
+    reports:
+        - text-summary
+        - lcov
