@@ -1,7 +1,7 @@
 expect = require('chai').expect
 rule = require "./../../src/rules/#{require('path').basename(__filename, '.coffee')}"
 
-describe "DontLinkToFavicon", ->
+describe 'DontLinkToFavicon', ->
     it 'should catch when there is a relational favicon link', ->
         expect rule::validate """
         link(rel='icon' href='favicon.ico')
