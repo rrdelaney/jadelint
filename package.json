@@ -5,7 +5,7 @@
   "description": "Finds bad practices in your Jade",
   "license": "MIT",
   "main": "target/jadelint.js",
-  "bin": "bin/jadelint.js",
+  "bin": "bin/jadelint",
   "scripts": {
     "test": "./node_modules/.bin/mocha && ./node_modules/.bin/istanbul report",
     "doc": "./node_modules/.bin/codo"
