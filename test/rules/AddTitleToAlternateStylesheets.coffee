@@ -19,3 +19,9 @@ describe 'AddTitleToAlternateStylesheets', ->
         link(href='/css/myStyle.css' rel='stylesheet')
         """
         .to.be.true
+
+    it 'should no nothing for other elements', ->
+        expect rule::validate """
+        div(href='/css/myStyle.css' rel='stylesheet')
+        """
+        .to.be.true
