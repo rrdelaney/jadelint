@@ -8,7 +8,7 @@ class OmitTypeForCSS extends Rule
     """
 
     check: ->
-        if @node.name is 'style'
+        if @node.type is 'Tag' and @node.name is 'style'
             for {name, val} in @node.attrs
                 if name is 'type' and @clean(val) is 'text/css' then @fail()
 

@@ -17,7 +17,7 @@ class HTMLRootRequiresLang extends Rule
     """
 
     check: ->
-        if @node.name is 'html'
+        if @node.type is 'Tag' and @node.name is 'html'
             for {name, val} in @node.attrs
                 if name is 'lang' then return
 

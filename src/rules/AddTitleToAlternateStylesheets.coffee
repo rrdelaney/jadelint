@@ -16,7 +16,7 @@ class AddTitleToAlternateStylesheets extends Rule
     """
 
     check: ->
-        if @node.name is 'link'
+        if @node.type is 'Tag' and @node.name is 'link'
             isAlternateStylesheet = false
             hasTitle = false
 

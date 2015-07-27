@@ -8,6 +8,6 @@ class DontUseHgroup extends Rule
     """
 
     check: ->
-        if @node.name is 'hgroup' then @fail()
+        if @node.type is 'Tag' and @node.name is 'hgroup' then @fail()
 
 module.exports = DontUseHgroup

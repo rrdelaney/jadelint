@@ -17,7 +17,7 @@ class DontLinkToFavicon extends Rule
     """
 
     check: ->
-        if @node.name is 'link'
+        if @node.type is 'Tag' and @node.name is 'link'
             for {name, val} in @node.attrs
                 if name is 'href' and val.match /favicon.ico/g then @fail()
 

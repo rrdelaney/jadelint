@@ -16,7 +16,7 @@ class DontUsePlaintextInBlockquote extends Rule
     """
 
     check: ->
-        if @node.name is 'blockquote'
+        if @node.type is 'Tag' and @node.name is 'blockquote'
             subnodes = @node.block?.nodes ? []
             firstChild = subnodes[0] ? {}
 

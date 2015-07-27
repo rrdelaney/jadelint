@@ -25,7 +25,7 @@ class UseFigCaptionAtStartOrEnd extends Rule
     """
 
     check: ->
-        if @node.name is 'figure'
+        if @node.type is 'Tag' and @node.name is 'figure'
             subnodes = @node.block?.nodes ? []
             for subnode, index in subnodes
                 if subnode.name is 'figcaption' and index isnt 0 and index isnt subnodes.length - 1 then @fail()

@@ -20,7 +20,7 @@ class UseTypeForOl extends Rule
     """
 
     check: ->
-        if @node.name is 'ol'
+        if @node.type is 'Tag' and @node.name is 'ol'
             for {name, val} in @node.attrs
                 if name is 'type' then return
 

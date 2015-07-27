@@ -8,7 +8,7 @@ class PreferStrongNativeSemantics extends Rule
     """
 
     check: ->
-        if @node.name in ['nav', 'hr', 'br']
+        if @node.type is 'Tag' and @node.name in ['nav', 'hr', 'br']
             for {name, val} in @node.attrs
                 if name is 'role' then @fail()
 

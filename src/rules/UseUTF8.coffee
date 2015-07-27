@@ -17,7 +17,7 @@ class UseUTF8 extends Rule
     """
 
     check: ->
-        if @node.name is 'meta'
+        if @node.type is 'Tag' and @node.name is 'meta'
             for {name, val} in @node.attrs
                 if name is 'charset' and @clean(val) isnt 'UTF-8' then @fail()
 
