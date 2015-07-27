@@ -1,5 +1,7 @@
 # jadelint
 
+[![Build Status](https://travis-ci.org/rrdelaney/jadelint.svg?branch=master)](https://travis-ci.org/rrdelaney/jadelint)
+
 :whale:
 Finds bad practices in your Jade
 
