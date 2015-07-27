@@ -5,6 +5,8 @@
 :whale:
 Finds bad practices in your Jade
 
+http://showterm.io/dfea6ec6a2bef2a4d5a56#1
+
 # Installation
 
 ```
