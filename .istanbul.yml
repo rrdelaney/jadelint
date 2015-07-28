@@ -1,3 +1,7 @@
+instrumentation:
+    excludes:
+        - Grunfile.coffee
+
 reporting:
     reports:
         - text-summary
