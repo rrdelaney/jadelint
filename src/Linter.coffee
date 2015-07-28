@@ -26,8 +26,6 @@ class Linter
             errors = errors.concat rules.checkAll @filename, node
             if node.block?
                 errors = errors.concat @lint node.block
-            if node.nodes?
-                errors = (errors.concat @lint subnode for subnode in node.nodes)
 
         errors
 

@@ -7,16 +7,16 @@ LintError = require './LintError'
 # @abstract
 class Rule
     # @property [String] the name of the rule
-    name = 'Generic Rule'
+    name: 'Generic Rule'
 
     # @property [String] filename currently being linted
-    filename = 'Generic Filename'
+    filename: 'Generic Filename'
 
     # @property [Number] lineNumber line number currently being linted
-    lineNumber = 'Generic LineNo'
+    lineNumber: 'Generic LineNo'
 
     # @property [String] level either 'ignore', 'warning', or 'failure'
-    level = 'ignore'
+    level: 'ignore'
 
     # Constructor for Rules, sets filename and linted node
     constructor: (@filename, @node) ->
@@ -36,7 +36,7 @@ class Rule
         err.level = @level
         err.name = @name
         err.filename = @filename
-        err.line = @node.line
+        err.line = @node?.line
         throw err
 
     # Cleans the quotes from a String
