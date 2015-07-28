@@ -24,5 +24,11 @@ describe 'Linter', ->
         it 'should run on a whole jade source', ->
             linter = new Linter 'testFilename.jade', 'p html'
             errors = linter.lint()
-            
+
             expect(errors).to.be.empty
+
+        it 'should error on an incorrect jade source', ->
+            linter = new Linter 'testFilename.jade', 'doctype xml'
+            errors = linter.lint()
+
+            expect(errors).to.not.be.empty

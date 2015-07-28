@@ -14,7 +14,6 @@ exports.checkAll = checkAll = (filename, node) ->
             rule = new rule filename, node
             rule.check()
         catch e
-            console.log name
             errors.push e
 
     errors
