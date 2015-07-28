@@ -10,22 +10,21 @@ describe 'UseTypeForOl', ->
         """
         .to.be.false
 
-    it 'should pass an ol with a type', ->
-        it 'should pass single quotes', ->
-            expect rule::validate """
-            ol(type='I')
-                li something
-                li else
-            """
-            .to.be.true
+    it 'should pass single quotes', ->
+        expect rule::validate """
+        ol(type='I')
+            li something
+            li else
+        """
+        .to.be.true
 
-        it 'should pass double quotes', ->
-            expect rule::validate """
-            ol(type="I")
-                li something
-                li else
-            """
-            .to.be.true
+    it 'should pass double quotes', ->
+        expect rule::validate """
+        ol(type="I")
+            li something
+            li else
+        """
+        .to.be.true
 
     it 'should ignore other elements', ->
         expect rule::validate """

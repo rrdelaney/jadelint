@@ -2,18 +2,17 @@ expect = require('chai').expect
 rule = require "./../../src/rules/#{require('path').basename(__filename, '.coffee')}"
 
 describe 'OmitTypeForCSS', ->
-    it 'should catch when the type is text/css', ->
-        it 'should catch single quotes', ->
-            expect rule::validate """
-            style(type='text/css')
-            """
-            .to.be.false
+    it 'should catch single quotes', ->
+        expect rule::validate """
+        style(type='text/css')
+        """
+        .to.be.false
 
-        it 'should catch double quotes', ->
-            expect rule::validate """
-            style(type="text/css")
-            """
-            .to.be.false
+    it 'should catch double quotes', ->
+        expect rule::validate """
+        style(type="text/css")
+        """
+        .to.be.false
 
     it 'should pass other style types', ->
         expect rule::validate """

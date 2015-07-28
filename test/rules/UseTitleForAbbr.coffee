@@ -8,18 +8,17 @@ describe 'UseTitleForAbbr', ->
         """
         .to.be.false
 
-    it 'should pass an ol with a type', ->
-        it 'should pass single quotes', ->
-            expect rule::validate """
-            abbr(title='War and Peace') WaP
-            """
-            .to.be.true
+    it 'should pass single quotes', ->
+        expect rule::validate """
+        abbr(title='War and Peace') WaP
+        """
+        .to.be.true
 
-        it 'should pass double quotes', ->
-            expect rule::validate """
-            abbr(title="War and Peace") WaP
-            """
-            .to.be.true
+    it 'should pass double quotes', ->
+        expect rule::validate """
+        abbr(title="War and Peace") WaP
+        """
+        .to.be.true
 
     it 'should ignore other elements', ->
         expect rule::validate """
