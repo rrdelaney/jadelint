@@ -4,7 +4,7 @@ exports.rules = rules = []
 
 do ->
     files = fs.readdirSync __dirname
-    for file in files when file isnt 'index.js'
+    for file in files when file isnt 'index.coffee' and file isnt 'index.js'
         rules[file.split('.').slice(0, -1).join('.')] = require "./#{file}"
 
 exports.checkAll = checkAll = (filename, node) ->
@@ -14,6 +14,7 @@ exports.checkAll = checkAll = (filename, node) ->
             rule = new rule filename, node
             rule.check()
         catch e
+            console.log name
             errors.push e
 
     errors

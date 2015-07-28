@@ -22,14 +22,7 @@ describe 'Linter', ->
             expect(errors).to.have.length 1
 
         it 'should run on a whole jade source', ->
-            linter = new Linter 'testFilename.jade', """
-            doctype html
-            .container#main
-                h1 Hello world!
-                .category
-                    p Hello
-            """
-
+            linter = new Linter 'testFilename.jade', 'p html'
             errors = linter.lint()
-            console.log errors
-            #expect(errors).to.be.empty
+            
+            expect(errors).to.be.empty
