@@ -1,29 +1,23 @@
 expect = require('chai').expect
 rule = require "./../../src/rules/#{require('path').basename(__filename, '.coffee')}"
 
-describe 'UseTypeForOl', ->
-    it 'should catch an ol without a type', ->
+describe 'UseTitleForAbbr', ->
+    it 'should catch an abbr without a title', ->
         expect rule::validate """
-        ol
-            li something
-            li else
+        abbr OMaM
         """
         .to.be.false
 
     it 'should pass an ol with a type', ->
         it 'should pass single quotes', ->
             expect rule::validate """
-            ol(type='I')
-                li something
-                li else
+            abbr(title='War and Peace') WaP
             """
             .to.be.true
 
         it 'should pass double quotes', ->
             expect rule::validate """
-            ol(type="I")
-                li something
-                li else
+            abbr(title="War and Peace") WaP
             """
             .to.be.true
 
