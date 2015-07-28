@@ -1,10 +1,10 @@
 expect = require('chai').expect
 rule = require "./../../src/rules/#{require('path').basename(__filename, '.coffee')}"
 
-describe 'DontUseUTags', ->
-    it 'should catch any u element', ->
+describe 'DontUseITags', ->
+    it 'should catch any i element', ->
         expect rule::validate """
-        u Some text
+        i Some text
         """
         .to.be.false
 

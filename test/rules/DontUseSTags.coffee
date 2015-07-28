@@ -8,8 +8,8 @@ describe 'DontUseSTags', ->
         """
         .to.be.false
 
-    it 'should catch plaintext in blockquote', ->
+    it 'should ignore other element types', ->
         expect rule::validate """
-        blockquote plaintext
+        div(type="text/css")
         """
         .to.be.true

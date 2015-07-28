@@ -1,15 +1,15 @@
 expect = require('chai').expect
 rule = require "./../../src/rules/#{require('path').basename(__filename, '.coffee')}"
 
-describe 'DontUseSTags', ->
+describe 'DontUseBTags', ->
     it 'should catch any b element', ->
         expect rule::validate """
         b Some text
         """
         .to.be.false
 
-    it 'should catch plaintext in blockquote', ->
+    it 'should ignore other element types', ->
         expect rule::validate """
-        blockquote plaintext
+        div(type="text/css")
         """
         .to.be.true
