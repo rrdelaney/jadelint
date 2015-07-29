@@ -43,7 +43,7 @@ class Reporter
         @errCount += fileErrCount
         @warnCount += fileWarnCount
         @log += errTable
-        @log += '\n'
+        if errors.length isnt 0 then @log += '\n'
 
     # Reports all errors to the console
     report: ->
@@ -61,7 +61,6 @@ class Reporter
         else
             problems = true
 
-        console.log @log
         if problems then 1 else 0
 
 module.exports = Reporter

@@ -7,7 +7,6 @@ module.exports = jadelint = (filenames, reporter) ->
     try
         conf = JSON.parse fs.readFileSync '.jadelintrc'
         try rules.rules[rule]::level = level for rule, level of conf
-        console.log rule, rules.rules[rule]::level for rule, level of conf
 
     reporter ?= new Reporter()
 
@@ -19,4 +18,5 @@ module.exports = jadelint = (filenames, reporter) ->
         reporter.aggregate errors, filename
 
     exitCode = reporter.report()
+    console.log reporter.log
     if exitCode isnt 0 then process.exit exitCode
