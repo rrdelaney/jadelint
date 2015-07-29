@@ -1,7 +1,8 @@
 node_modules/
 target/
 coverage/
-docs/
+docs/api/
+docs/*.md
 
 *.jade
 .jadelintrc

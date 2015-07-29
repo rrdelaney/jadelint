@@ -1,0 +1,9 @@
+#!/bin/sh
+cd docs
+git init
+git config user.name "Travis CI"
+git config user.email "rrdelaney@outlook.com"
+git remote add deploy https://${GITHUB_TOKEN}@github.com/rrdelaney/jadelint.git
+git add --all
+git commit -m "Travis CI Build"
+git push --force --quiet -u deploy gh-pages
