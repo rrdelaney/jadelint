@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-    grunt.registerTask('doc', 'Creates documentation for jadelint', function() {
+    grunt.registerTask('doc:rules', 'Creates documentation for jadelint', function() {
         grunt.task.requires('dist');
         var rules = require('./../target/rules').rules;
         var docOutput = '';
@@ -16,5 +16,6 @@ module.exports = function(grunt) {
         }
 
         grunt.file.write('docs/rules.md', docOutput);
+        grunt.log.ok('docs/rules.md created successfully!');
     });
 };
