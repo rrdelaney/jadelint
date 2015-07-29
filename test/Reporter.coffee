@@ -13,6 +13,28 @@ errors = [
     line: 4
 ]
 
+multipleErrors = [
+    level: 'error'
+    name: 'some_error'
+    filename: 'some_file'
+    line: 6
+,
+    level: 'warning'
+    name: 'some_warning'
+    filename: 'some_file'
+    line: 4
+,
+    level: 'error'
+    name: 'some_error'
+    filename: 'some_file'
+    line: 6
+,
+    level: 'warning'
+    name: 'some_warning'
+    filename: 'some_file'
+    line: 4
+]
+
 noErrors = []
 
 describe 'Reporter', ->
@@ -63,4 +85,11 @@ describe 'Reporter', ->
             rep.report()
             expect(rep.warnCount).to.equal 0
             expect(rep.errCount).to.equal 0
+            expect(rep.log).to.not.equal ''
+
+        it 'should log multiple errors and warning', ->
+            rep = new Reporter
+            rep.aggregate multipleErrors, 'some_file'
+            expect(rep.errCount).to.equal 2
+            expect(rep.warnCount).to.equal 2
             expect(rep.log).to.not.equal ''
