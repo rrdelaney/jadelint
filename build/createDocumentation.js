@@ -1,0 +1,20 @@
+module.exports = function(grunt) {
+    grunt.registerTask('doc', 'Creates documentation for jadelint', function() {
+        grunt.task.requires('dist');
+        var rules = require('./../target/rules').rules;
+        var docOutput = '';
+
+        for (var rule in rules) {
+            var props = new rules[rule];
+
+            docOutput += '### ' + rule + '\n' +
+                         '_' + props.name + '_\n\n' +
+                         '__default__: ' + props.level + '\n' +
+                         '\n' +
+                         props.description +
+                         '\n\n';
+        }
+
+        grunt.file.write('docs/rules.md', docOutput);
+    });
+};

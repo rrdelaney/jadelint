@@ -25,6 +25,7 @@ module.exports = (grunt) ->
         clean:
             dist: ['<%= target_dir %>']
 
+    grunt.loadTasks 'build/'
     grunt.loadNpmTasks 'grunt-coffeelint'
     grunt.loadNpmTasks 'grunt-contrib-clean'
     grunt.loadNpmTasks 'grunt-contrib-coffee'

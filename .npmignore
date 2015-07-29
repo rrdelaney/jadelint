@@ -1,7 +1,7 @@
 src/
 Gruntfile.coffee
 coverage/
-doc/
+docs/
 .jadelintrc
 .git*
 test/
