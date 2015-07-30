@@ -44,9 +44,9 @@ class Rule
     # @param [String] str cleans quotes from both sides
     clean: (str) ->
         str.replace /^'/g, ''
-           .replace /'$/g, ''
-           .replace /^"/g, ''
-           .replace /"$/g, ''
+            .replace /'$/g, ''
+            .replace /^"/g, ''
+            .replace /"$/g, ''
 
     # Runs the check method with a single jade node.
     #

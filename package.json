@@ -7,6 +7,7 @@
   "main": "target/Linter.js",
   "bin": "bin/jadelint",
   "scripts": {
+    "pretest": "grunt coffeelint",
     "test": "./node_modules/.bin/mocha",
     "posttest": "./node_modules/.bin/istanbul report",
     "doc": "./node_modules/.bin/codo"

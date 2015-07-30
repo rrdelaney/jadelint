@@ -20,7 +20,7 @@ module.exports = (grunt) ->
                 max_line_length:
                     level: 'ignore'
                 indentation:
-                    level: 'ignore'
+                    value: 4
 
         clean:
             dist: ['<%= target_dir %>']
