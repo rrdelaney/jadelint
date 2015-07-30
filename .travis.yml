@@ -5,8 +5,10 @@ node_js:
 
 sudo: false
 
+before_script:
+    - npm install -g grunt-cli
+
 after_success:
     - 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
-    - npm install -g grunt-cli
     - grunt coffee doc
     - sh script/deploy
