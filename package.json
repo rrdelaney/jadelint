@@ -4,7 +4,7 @@
   "version": "0.1.1",
   "description": "Finds bad practices in your Jade",
   "license": "MIT",
-  "main": "target/jadelint.js",
+  "main": "target/Linter.js",
   "bin": "bin/jadelint",
   "scripts": {
     "test": "./node_modules/.bin/mocha",
