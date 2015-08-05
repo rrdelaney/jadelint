@@ -1,7 +1,7 @@
 expect = require('chai').expect
 rule = require "./../../src/rules/#{require('path').basename(__filename, '.coffee')}"
 
-describe 'AddTitleToAlternateStylesheets', ->
+describe 'AddMaxToProgress', ->
     it 'should catch progress with no max', ->
         expect rule::validate """
         progress(value='0.5')

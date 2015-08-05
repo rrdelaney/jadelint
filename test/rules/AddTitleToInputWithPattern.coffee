@@ -1,7 +1,7 @@
 expect = require('chai').expect
 rule = require "./../../src/rules/#{require('path').basename(__filename, '.coffee')}"
 
-describe 'AddTitleToAlternateStylesheets', ->
+describe 'AddTitleToInputWithPattern', ->
     it 'should catch no title with pattern', ->
         expect rule::validate """
         input(pattern="[0-9]{3}")
