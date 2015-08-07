@@ -8,6 +8,6 @@ class OnlyHTMLDoctype extends Rule
     """
 
     check: ->
-        if @node.type is 'Doctype' and @node.val isnt 'html' then @fail()
+        if @node.type is 'Doctype' and @node.val.toLowerCase() isnt 'html' then @fail()
 
 module.exports = OnlyHTMLDoctype
