@@ -1,7 +1,7 @@
 {
   "name": "jadelint",
   "author": "Ryan Delaney",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Finds bad practices in your Jade",
   "license": "MIT",
   "main": "target/Linter.js",
@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "chalk": "^1.1.0",
+    "fs-readdir-recursive": "^0.1.2",
     "jade-lexer": "0.0.8",
     "jade-parser": "0.0.8",
     "log-symbols": "^1.0.2",

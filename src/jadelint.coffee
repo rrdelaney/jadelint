@@ -1,4 +1,5 @@
 fs = require 'fs'
+readdir = require 'fs-readdir-recursive'
 Linter = require './Linter'
 Reporter = require './Reporter'
 rules = require './rules'
@@ -11,11 +12,21 @@ module.exports = jadelint = (filenames, reporter) ->
     reporter ?= new Reporter()
 
     for filename in filenames
-        contents = fs.readFileSync filename
-        linter = new Linter filename, contents.toString()
-        errors = linter.lint()
+        if fs.lstatSync(filename).isDirectory()
+            for subfile in readdir(filename)
+                contents = fs.readFileSync filename + '/' + subfile
+                linter = new Linter filename + '/' + subfile, contents.toString()
+                errors = linter.lint()
 
-        reporter.aggregate errors, filename
+                reporter.aggregate errors, filename + '/' + subfile
+
+
+        else
+            contents = fs.readFileSync filename
+            linter = new Linter filename, contents.toString()
+            errors = linter.lint()
+
+            reporter.aggregate errors, filename
 
     exitCode = reporter.report()
     console.log reporter.log
