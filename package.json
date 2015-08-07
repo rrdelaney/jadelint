@@ -1,11 +1,11 @@
 {
   "name": "jadelint",
   "author": "Ryan Delaney",
-  "version": "0.2.0",
+  "version": "0.2.3",
   "description": "Finds bad practices in your Jade",
   "license": "MIT",
   "main": "target/Linter.js",
-  "bin": "bin/jadelint",
+  "bin": "./bin/jadelint",
   "scripts": {
     "pretest": "grunt coffeelint",
     "test": "./node_modules/.bin/mocha",
@@ -17,7 +17,8 @@
     "lint"
   ],
   "files": [
-    "target"
+    "target",
+    "bin"
   ],
   "repository": {
     "type": "git",

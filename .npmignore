@@ -5,3 +5,4 @@ docs/
 .jadelintrc
 .git*
 test/
+script/
