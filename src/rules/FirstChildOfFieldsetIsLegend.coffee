@@ -1,10 +1,10 @@
 Rule = require './../Rule'
 
 class FirstChildOfFieldsetIsLegend extends Rule
-    name: 'Only use the figcaption tag at start or end of figure'
-    level: 'warning'
+    name: 'Only use the legent tag at start of a fieldset'
+    level: 'ignore'
     description: """
-    Only use the `figcaption` tag at the beginning or end of a `figure` tag
+    Only use the `legend` tag at the beginning of a `fieldset` tag
 
     ```jade
     //- Valid
