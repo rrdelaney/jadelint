@@ -5,7 +5,7 @@ Linter = require './Linter'
 Reporter = require './Reporter'
 rules = require './rules'
 
-module.exports = jadelint = (filenames, reporter) ->
+module.exports = jadelint = (filenames, reporter, callback) ->
     try
         conf = JSON.parse fs.readFileSync '.jadelintrc'
         try rules.rules[rule]::level = level for rule, level of conf
@@ -30,5 +30,4 @@ module.exports = jadelint = (filenames, reporter) ->
             reporter.aggregate errors, filename
 
     exitCode = reporter.report()
-    console.log reporter.log
-    if exitCode isnt 0 then process.exit exitCode
+    callback reporter.log, exitCode
