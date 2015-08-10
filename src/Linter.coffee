@@ -21,6 +21,7 @@ class Linter
                 level: 'error'
                 filename: @filename
                 line: e.line
+                code: e.code
 
     # Recursively lints the given source
     lint: (root = @ast) ->
