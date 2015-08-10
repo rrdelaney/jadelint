@@ -16,7 +16,11 @@ class Linter
         try
             @ast = parse lex @source, @filename
         catch e
-            @compileError = e
+            @compileError =
+                name: e.msg
+                level: 'error'
+                filename: @filename
+                line: e.line
 
     # Recursively lints the given source
     lint: (root = @ast) ->
