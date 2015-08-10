@@ -8,7 +8,10 @@ sudo: false
 before_script:
     - npm install -g grunt-cli
 
+script:
+    - npm test
+    - grunt
+
 after_success:
     - 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
-    - grunt coffee doc
     - sh script/deploy

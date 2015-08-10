@@ -22,6 +22,15 @@ module.exports = (grunt) ->
                 indentation:
                     value: 4
 
+        codo:
+            api:
+                expand: true
+                src: '<%= src_dir %>'
+                dest: 'docs/api'
+                options:
+                    name: 'jadelint'
+                    title: 'API'
+
         clean:
             dist: ['<%= target_dir %>']
 
@@ -29,9 +38,10 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-coffeelint'
     grunt.loadNpmTasks 'grunt-contrib-clean'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
+    grunt.loadNpmTasks 'grunt-codo'
 
     grunt.registerTask 'dist', ['clean:dist', 'coffeelint:dist', 'coffee:dist']
-    grunt.registerTask 'doc', ['doc:rules', 'doc:api']
+    grunt.registerTask 'doc', ['doc:rules', 'codo']
 
     grunt.registerTask 'default', ['dist', 'doc']
 
