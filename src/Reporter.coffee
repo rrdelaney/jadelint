@@ -27,7 +27,7 @@ class Reporter
         fileErrCount = 0
         fileWarnCount = 0
 
-        errTable = table errors.filter((err) -> err.level isnt 'ignore').map (err) ->
+        errTable = table errors.filter((err) -> err.level? and err.level isnt 'ignore').map (err) ->
             {level, name, filename, line} = err
             if level is 'error' then fileErrCount++
             if level is 'warning' then fileWarnCount++
