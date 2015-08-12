@@ -12,6 +12,7 @@ Rules Documentation: http://ryandelaney.io/jadelint
 API Documentation: http://ryandelaney.io/jadelint/api
 
 Gulp plugin: https://github.com/patwork/gulp-jadelint
+
 Grunt plugin: https://github.com/rrdelaney/grunt-jadelint
 
 Please don't hesitate to open issues with feature requests or bugs! 
