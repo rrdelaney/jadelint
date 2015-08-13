@@ -53,7 +53,7 @@ class Reporter
             @log += chalk.yellow "#{symbol.warning}  #{@warnCount} warning#{if @warnCount isnt 1 then 's' else ''}\n"
 
         if @errCount > 0
-            @log += chalk.red "#{symbol.error}  #{@errCount} warning#{if @errCount isnt 1 then 's' else ''}\n"
+            @log += chalk.red "#{symbol.error}  #{@errCount} error#{if @errCount isnt 1 then 's' else ''}\n"
 
         if @errCount is 0 and @warnCount is 0
             @log += chalk.green "#{symbol.success} No problems found!\n"
