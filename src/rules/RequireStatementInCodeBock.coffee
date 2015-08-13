@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class RequireStatementInCodeBock extends Rule
     name: 'Require Statement in Code Block'
-    level: 'warning'
+    level: 'error'
     description: """
     All code in a code block must be a valid statement.
 
