@@ -2,7 +2,7 @@
 var jadelint = require('./../target/jadelint.js');
 jadelint(process.argv.slice(2, process.argv.length), undefined, function(log, err) {
     console.log(log);
-    if (err === 0) {
+    if (err !== 0) {
         process.exit(err);
     }
 });
