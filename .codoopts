@@ -1,4 +1,0 @@
---name "jadelint"
---readme README.md
---output ./docs/api
-./src
