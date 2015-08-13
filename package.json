@@ -1,7 +1,7 @@
 {
   "name": "jadelint",
   "author": "Ryan Delaney",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "Finds bad practices in your Jade",
   "license": "MIT",
   "main": "target/Linter.js",

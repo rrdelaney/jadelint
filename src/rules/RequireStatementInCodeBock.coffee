@@ -24,7 +24,6 @@ class RequireStatementInCodeBock extends Rule
     check: ->
         if @node.type is 'Code'
             try
-                console.log @node.val
                 new Function @node.val
             catch error
                 @fail()
