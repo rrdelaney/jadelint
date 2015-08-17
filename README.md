@@ -7,8 +7,8 @@
 Finds bad practices in your Jade
 
 [Demo](http://showterm.io/dfea6ec6a2bef2a4d5a56) |
-[Rules Documentation](http://ryandelaney.io/jadelint) |
-[API Documentation](http://ryandelaney.io/jadelint/api) |
+[Rules Documentation](http://rdel.io/jadelint) |
+[API Documentation](http://rdel.io/jadelint/api) |
 [Gulp plugin](https://github.com/patwork/gulp-jadelint) |
 [Grunt plugin](https://github.com/rrdelaney/grunt-jadelint)
 
