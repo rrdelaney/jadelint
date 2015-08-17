@@ -23,4 +23,4 @@ deploy:
     skip_cleanup: true
     on:
         branch: master
-        condition: $(npm view jadelint dist-tags.latest) != $(node -e "console.log(require('./package.json').version)")
+        condition: $(npm view jadelint dist-tags.latest) != $(node -p "require('./package.json').version")
