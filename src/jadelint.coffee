@@ -1,11 +1,11 @@
 fs = require 'fs'
 path = require 'path'
-readdir = require 'fs-readdir-recursive'
+vinyl = require 'vinyl-fs'
 Linter = require './Linter'
 Reporter = require './Reporter'
 rules = require './rules'
 
-module.exports = jadelint = (filenames, reporter, callback) ->
+module.exports = jadelint = (files, reporter, callback) ->
     try
         conf = JSON.parse fs.readFileSync '.jadelintrc'
         for rule, confVal of conf
@@ -17,23 +17,15 @@ module.exports = jadelint = (filenames, reporter, callback) ->
                         try rules.rules[rule]::[key] = val
 
     reporter ?= new Reporter()
-
-    for filename in filenames
-        if fs.lstatSync(filename).isDirectory()
-            for subfile in readdir(filename)
-                contents = fs.readFileSync path.join filename, subfile
-                linter = new Linter path.join(filename, subfile), contents.toString()
-                errors = linter.lint()
-
-                reporter.aggregate errors, path.join filename, subfile
+    callback ?= -> undefined
 
 
-        else
-            contents = fs.readFileSync filename
-            linter = new Linter filename, contents.toString()
-            errors = linter.lint()
+    vinyl.src(filenames)
+    .pipe (file) ->
+        linter = new Linter file
+        errors = linter.lint()
 
-            reporter.aggregate errors, filename
-
-    exitCode = reporter.report()
-    callback reporter.log, exitCode
+        reporter.aggregate errors, file.path
+    .pipe ->
+        exitCode = reporter.report()
+        callback reporter.log, exitCode

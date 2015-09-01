@@ -10,16 +10,15 @@ rules = require './rules'
 #     errors = linter.lint()
 class Linter
     # Create a new linter
-    # @param [String] filename the filename to use for errors
-    # @param [String] source the jade source to be linted
-    constructor: (@filename, @source)->
+    # @param [Vinyl] file Vinyl file
+    constructor: (@file)->
         try
-            @ast = parse lex @source, @filename
+            @ast = parse lex @file.contents.toString()
         catch e
             @compileError =
                 name: e.msg
                 level: 'error'
-                filename: @filename
+                filename: @file.path
                 line: e.line
                 code: e.code
 
@@ -28,7 +27,7 @@ class Linter
         if @compileError? then return [@compileError]
         errors = []
         for node in root.nodes
-            errors = errors.concat rules.checkAll @filename, node
+            errors = errors.concat rules.checkAll @file.path, node
             if node.block?
                 errors = errors.concat @lint node.block
 

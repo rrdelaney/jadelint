@@ -1,34 +1,47 @@
 expect = require('chai').expect
+File = require 'vinyl'
 Linter = require './../src/Linter'
 
 describe 'Linter', ->
     describe 'constructor', ->
         it 'should set filename', ->
-            linter = new Linter 'testFilename.jade', 'testSource'
-            expect(linter.filename).to.equal 'testFilename.jade'
+            linter = new Linter new File
+                path: 'testFilename.jade'
+                contents: new Buffer('testSource')
+            expect(linter.file.path).to.equal 'testFilename.jade'
 
         it 'should set source', ->
-            linter = new Linter 'testFilename.jade', 'testSource'
-            expect(linter.source).to.equal 'testSource'
+            linter = new Linter new File
+                path: 'testFilename.jade'
+                contents: new Buffer('testSource')
+            expect(linter.file.contents.toString()).to.equal 'testSource'
 
         it 'should set an AST', ->
-            linter = new Linter 'testFilename.jade', 'div.class#id'
+            linter = new Linter new File
+                path: 'testFilename.jade'
+                contents: new Buffer('p.strong')
             expect(linter.ast).to.not.be.undefined
 
     describe 'lint', ->
         it 'should catch compile errors', ->
-            linter = new Linter 'testFilename.jade', 'p(div=")'
+            linter = new Linter new File
+                path: 'testFilename.jade'
+                contents: new Buffer('p=')
             errors = linter.lint()
             expect(errors).to.have.length 1
 
         it 'should run on a whole jade source', ->
-            linter = new Linter 'testFilename.jade', 'p html'
+            linter = new Linter new File
+                path: 'testFilename.jade'
+                contents: new Buffer('p html')
             errors = linter.lint()
 
             expect(errors).to.be.empty
 
         it 'should error on an incorrect jade source', ->
-            linter = new Linter 'testFilename.jade', 'doctype xml'
+            linter = new Linter new File
+                path: 'testFilename.jade'
+                contents: new Buffer('doctype xml')
             errors = linter.lint()
 
             expect(errors).to.not.be.empty
