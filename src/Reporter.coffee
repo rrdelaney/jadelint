@@ -6,7 +6,7 @@ table = require 'text-table'
 # Other reports should implement the same interface
 #
 # @example
-#     linter = new Linter 'myFile.jade', sourceOf 'myFile.jade'
+#     linter = new Linter ...
 #     reporter = new Reporter
 #     errors = linter.lint()
 #     reporter.aggregate errors, 'myFile.jade'

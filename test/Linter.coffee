@@ -22,7 +22,14 @@ describe 'Linter', ->
             linter = new Linter new File
                 path: 'testFilename.jade'
                 contents: new Buffer('p.strong')
-                
+
+            expect(linter.ast).to.not.be.undefined
+
+        it 'should allow the alternate use', ->
+            linter = new Linter 'myFile.jade', 'p html'
+
+            expect(linter.file.path).to.equal 'myFile.jade'
+            expect(linter.file.contents.toString()).to.equal 'p html'
             expect(linter.ast).to.not.be.undefined
 
     describe 'lint', ->
