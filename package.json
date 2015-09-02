@@ -30,7 +30,9 @@
     "jade-lexer": "0.0.8",
     "jade-parser": "0.0.8",
     "log-symbols": "^1.0.2",
+    "map-stream": "0.0.6",
     "text-table": "^0.2.0",
+    "through2": "^2.0.0",
     "vinyl": "^0.5.1",
     "vinyl-fs": "^1.0.0"
   },

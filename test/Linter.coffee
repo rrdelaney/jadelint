@@ -8,18 +8,21 @@ describe 'Linter', ->
             linter = new Linter new File
                 path: 'testFilename.jade'
                 contents: new Buffer('testSource')
+
             expect(linter.file.path).to.equal 'testFilename.jade'
 
         it 'should set source', ->
             linter = new Linter new File
                 path: 'testFilename.jade'
                 contents: new Buffer('testSource')
+
             expect(linter.file.contents.toString()).to.equal 'testSource'
 
         it 'should set an AST', ->
             linter = new Linter new File
                 path: 'testFilename.jade'
                 contents: new Buffer('p.strong')
+                
             expect(linter.ast).to.not.be.undefined
 
     describe 'lint', ->
@@ -27,6 +30,7 @@ describe 'Linter', ->
             linter = new Linter new File
                 path: 'testFilename.jade'
                 contents: new Buffer('p=')
+
             errors = linter.lint()
             expect(errors).to.have.length 1
 
@@ -34,6 +38,7 @@ describe 'Linter', ->
             linter = new Linter new File
                 path: 'testFilename.jade'
                 contents: new Buffer('p html')
+
             errors = linter.lint()
 
             expect(errors).to.be.empty
@@ -42,6 +47,7 @@ describe 'Linter', ->
             linter = new Linter new File
                 path: 'testFilename.jade'
                 contents: new Buffer('doctype xml')
+
             errors = linter.lint()
 
             expect(errors).to.not.be.empty

@@ -1,22 +1,24 @@
 #!/usr/bin/env node
-
 var fs = require('fs');
 var vinyl = require('vinyl-fs');
 var jadelint = require('./../target/jadelint.js');
 
 var filenames = process.argv
-                .slice(2, process.argv.length)
-                .map(function(filename) {
-                    if (fs.lstatSync(filename).isDirectory()) {
-                        return filename + '/**/*.jade';
-                    } else {
-                        return filename;
-                    }
-                });
+    .slice(2, process.argv.length)
+    .map(function(filename) {
+        if (fs.lstatSync(filename).isDirectory()) {
+            return filename + '/**/*.jade';
+        } else {
+            return filename;
+        }
+    });
 
-jadelint(vinyl.src(filenames), undefined, function(log, err) {
-    console.log(log);
-    if (err !== 0) {
-        process.exit(err);
+var jadelintrc = JSON.parse(fs.readFileSync(process.cwd() + '/.jadelintrc'));
+vinyl.src(filenames)
+.pipe(jadelint(jadelintrc, undefined, function(reporter) {
+    var exitCode = reporter.report();
+    console.log(reporter.log);
+    if (exitCode !== 0) {
+        process.exit(exitCode);
     }
-});
+}));

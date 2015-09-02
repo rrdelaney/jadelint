@@ -43,7 +43,7 @@ class Reporter
         @errCount += fileErrCount
         @warnCount += fileWarnCount
         @log += errTable
-        if errors.length isnt 0 then @log += '\n'
+        if fileErrCount isnt 0 and fileWarnCount isnt 0 then @log += '\n'
 
     # Reports all errors to the console
     report: ->

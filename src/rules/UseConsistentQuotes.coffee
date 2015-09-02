@@ -28,7 +28,6 @@ class UseConsistentQuotes extends Rule
 
     checkString: (str) ->
         if str.match /'[\s\S]*'/g
-            console.log firstUsed
             if firstUsed is '"' then @fail() else firstUsed = "'"
         else if str.match /"[\s\S]*"/g
             if firstUsed is "'" then @fail() else firstUsed = '"'
@@ -36,7 +35,6 @@ class UseConsistentQuotes extends Rule
     check: ->
         if @node.type is 'Tag'
             for {name, val} in @node.attrs
-                console.log name, val
                 @checkString val
 
 module.exports = UseConsistentQuotes

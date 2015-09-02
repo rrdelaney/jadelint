@@ -1,31 +1,24 @@
 fs = require 'fs'
 path = require 'path'
-vinyl = require 'vinyl-fs'
-Linter = require './Linter'
+through2 = require 'through2'
 Reporter = require './Reporter'
+Linter = require './Linter'
 rules = require './rules'
 
-module.exports = jadelint = (files, reporter, callback) ->
-    try
-        conf = JSON.parse fs.readFileSync '.jadelintrc'
-        for rule, confVal of conf
-            switch typeof value
-                when 'string'
-                    try rules.rules[rule]::level = confVal
-                when 'object'
-                    for key, val of confVal
-                        try rules.rules[rule]::[key] = val
+module.exports = jadelint = (conf = {}, reporter = new Reporter, callback = ->) ->
+    for rule, confVal of conf
+        switch typeof confVal
+            when 'string'
+                try rules.rules[rule]::level = confVal
+            when 'boolean'
+                try rules.rules[rule]::level = 'ignore'
+            when 'object'
+                for key, val of confVal
+                    try rules.rules[rule]::[key] = val
 
-    reporter ?= new Reporter()
-    callback ?= -> undefined
-
-
-    vinyl.src(filenames)
-    .pipe (file) ->
+    through2.obj (file, _, cb) ->
         linter = new Linter file
-        errors = linter.lint()
-
-        reporter.aggregate errors, file.path
-    .pipe ->
-        exitCode = reporter.report()
-        callback reporter.log, exitCode
+        reporter.aggregate linter.lint(), file.path
+        cb()
+    , ->
+        callback reporter

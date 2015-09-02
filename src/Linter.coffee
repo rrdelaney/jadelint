@@ -11,7 +11,7 @@ rules = require './rules'
 class Linter
     # Create a new linter
     # @param [Vinyl] file Vinyl file
-    constructor: (@file)->
+    constructor: (@file) ->
         try
             @ast = parse lex @file.contents.toString()
         catch e
