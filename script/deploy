@@ -1,9 +1,11 @@
-#!/bin/sh
-cd docs
-git init
-git config user.name "Travis CI"
-git config user.email "rrdelaney@outlook.com"
-git remote add deploy https://${GITHUB_TOKEN}@github.com/rrdelaney/jadelint
-git add --all
-git commit -m "Travis CI Build"
-git push --force --quiet -u deploy master:gh-pages
+#!/bin/bash
+if ["$TRAVIS_BRANCH" == "master"]; then
+    cd docs
+    git init
+    git config user.name "Travis CI"
+    git config user.email "rrdelaney@outlook.com"
+    git remote add deploy https://${GITHUB_TOKEN}@github.com/rrdelaney/jadelint
+    git add --all
+    git commit -m "Travis CI Build"
+    git push --force --quiet -u deploy master:gh-pages
+fi
