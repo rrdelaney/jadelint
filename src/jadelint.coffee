@@ -23,7 +23,7 @@ jadelint = (conf, reporter = new Reporter, callback = ->) ->
     conf ?= {}
 
     through2.obj (file, _, cb) ->
-        linter = new Linter file
+        linter = new Linter file, undefined, conf
         reporter.aggregate linter.lint(), file.path
         cb()
     , ->
