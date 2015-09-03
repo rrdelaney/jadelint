@@ -47,7 +47,6 @@ describe 'Linter', ->
                 contents: new Buffer('p html')
 
             errors = linter.lint()
-
             expect(errors).to.be.empty
 
         it 'should error on an incorrect jade source', ->

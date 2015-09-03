@@ -28,6 +28,30 @@ describe 'Rule', ->
             rule = new Rule 'testFilename', {}
             expect(rule.node).to.eql {}
 
+        describe 'rule configuration', ->
+            describe 'boolean configuration', ->
+                it 'should apply true', ->
+                    rule = new Rule 'testFilename', {}, true
+                    expect(rule.level).to.equal 'error'
+
+                it 'should apply false', ->
+                    rule = new Rule 'testFilename', {}, false
+                    expect(rule.level).to.equal 'ignore'
+
+            describe 'string configuration', ->
+                it 'should apply any string to the level', ->
+                    rule = new Rule 'testFilename', {}, 'level'
+                    expect(rule.level).to.equal 'level'
+
+            describe 'object configuration', ->
+                it 'should apply any key/value pair to the rule', ->
+                    rule = new Rule 'testFilename', {},
+                        x: 'y'
+                        a: 'b'
+
+                    expect(rule.x).to.equal 'y'
+                    expect(rule.a).to.equal 'b'
+
     describe 'check', ->
         it 'should default to false', ->
             expect(Rule::check()).to.be.false

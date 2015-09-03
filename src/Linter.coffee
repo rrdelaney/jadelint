@@ -23,7 +23,8 @@ class Linter
     # Create a new linter
     # @param [Vinyl | String] file Vinyl file, or filename
     # @param [String | undefined] contents if a filename was provided instead of a Vinyl file, the file contents should be read in
-    constructor: (@file, contents) ->
+    # @param [Boolean | String | Object] conf the configuration to be applied to the rule
+    constructor: (@file, contents, @conf = {}) ->
         if contents?
             @file = new File
                 path: @file
@@ -44,7 +45,7 @@ class Linter
         if @compileError? then return [@compileError]
         errors = []
         for node in root.nodes
-            errors = errors.concat rules.checkAll @file.path, node
+            errors = errors.concat rules.checkAll @file.path, node, @conf
             if node.block?
                 errors = errors.concat @lint node.block
 

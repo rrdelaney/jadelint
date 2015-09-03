@@ -19,7 +19,23 @@ class Rule
     level: 'ignore'
 
     # Constructor for Rules, sets filename and linted node
-    constructor: (@filename, @node) ->
+    #
+    # @param [String] filename the name of the file being linted
+    # @param [Node] node the jade node being linted
+    # @param [Boolean|String|Object] conf the configuration object to apply to the rule
+    #
+    # To apply configuration to the rule, use the conf argument. If a
+    # boolean is provided, the level will be set to 'ignore' if false and 'error'
+    # if true. If a string is given, the level is set to that string. If an
+    # object is given, any property of the object will be applied to the rule.
+    constructor: (@filename, @node, conf = {}) ->
+        if typeof conf is 'boolean'
+            @level = if conf then 'error' else 'ignore'
+        else if typeof conf is 'string'
+            @level = conf
+        else
+            for key, val of conf
+                @[key] = val
 
     # Method used to check the current node for lint errors
     #
