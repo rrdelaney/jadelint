@@ -20,10 +20,19 @@ rules = require './rules'
 #         exitCode = reporter.report()
 #         console.log reporter.log
 jadelint = (conf, reporter = new Reporter, callback = ->) ->
-    dir = process.cwd()
-    conf ?= try require "#{dir}/.jadelintrc"
-    conf ?= (try require "#{dir}/.jadelintrc") while (dir += '/..'; '/' isnt fs.realpathSync dir)
-    conf ?= {}
+    getDefaultConf = () ->
+        def = {}
+        dir = process.cwd()
+        while '/' isnt fs.realpathSync dir
+            try
+                for prop, val of JSON.parse fs.readFileSync "#{dir}/.jadelintrc"
+                    def[prop] ?= val
+
+            dir += '/..'
+
+        def
+
+    conf ?= getDefaultConf()
 
     through2.obj (file, _, cb) ->
         linter = new Linter file, undefined, conf
