@@ -69,7 +69,7 @@ describe 'Reporter', ->
             rep.aggregate noErrors, 'some_file'
             expect(rep.warnCount).to.equal 0
             expect(rep.errCount).to.equal 0
-            expect(rep.log).to.equal ''
+            expect(rep.log).to.equal '\n'
 
     describe 'report', ->
         it 'should log the errors', ->
