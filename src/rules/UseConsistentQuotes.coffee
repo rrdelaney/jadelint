@@ -2,7 +2,7 @@ Rule = require './../Rule'
 
 class UseConsistentQuotes extends Rule
     name: 'Use consistent quotes for strings'
-    level: 'warning'
+    level: 'ignore'
     description: """
     Make sure to use the same quote type for strings
 
