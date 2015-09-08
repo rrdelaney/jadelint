@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 var fs = require('fs');
 var vinyl = require('vinyl-fs');
-var jadelint = require('./../target/jadelint.js');
+var jadelint = require('./../jadelint.js');
 
 var filenames = process.argv
     .slice(2, process.argv.length)
@@ -13,7 +13,12 @@ var filenames = process.argv
         }
     });
 
-var jadelintrc = JSON.parse(fs.readFileSync(process.cwd() + '/.jadelintrc'));
+try {
+    var jadelintrc = JSON.parse(fs.readFileSync(process.cwd() + '/.jadelintrc'));
+} catch (e) {
+    var jadelintrc = {};
+}
+
 vinyl.src(filenames)
 .pipe(jadelint(jadelintrc, undefined, function(reporter) {
     var exitCode = reporter.report();

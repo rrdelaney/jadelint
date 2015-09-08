@@ -6,3 +6,8 @@ docs/
 .git*
 test/
 script/
+tasks/
+.coffee-coverage.js
+.gitignore
+.instanbul.yml
+.travis.yml

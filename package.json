@@ -4,7 +4,7 @@
   "version": "0.3.0-beta",
   "description": "Finds bad practices in your Jade",
   "license": "MIT",
-  "main": "target/Linter.js",
+  "main": "jadelint.js",
   "bin": "./bin/jadelint",
   "scripts": {
     "pretest": "grunt coffeelint",
@@ -15,10 +15,6 @@
   "keywords": [
     "jade",
     "lint"
-  ],
-  "files": [
-    "target",
-    "bin"
   ],
   "repository": {
     "type": "git",
