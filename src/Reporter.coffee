@@ -42,13 +42,11 @@ class Reporter
         if filename and fileErrCount > 0 or fileWarnCount > 0 then @log += "#{chalk.underline filename}\n" else ''
         @errCount += fileErrCount
         @warnCount += fileWarnCount
-        @log += errTable
+        @log += errTable + '\n'
         if fileErrCount > 0 or fileWarnCount > 0 then @log += '\n'
 
     # Reports all errors to the console
     report: ->
-        @log += '\n'
-
         if @warnCount > 0
             @log += chalk.yellow "#{symbol.warning}  #{@warnCount} warning#{if @warnCount isnt 1 then 's' else ''}\n"
 
@@ -56,7 +54,7 @@ class Reporter
             @log += chalk.red "#{symbol.error}  #{@errCount} error#{if @errCount isnt 1 then 's' else ''}\n"
 
         if @errCount is 0 and @warnCount is 0
-            @log += chalk.green "#{symbol.success} No problems found!\n"
+            @log += chalk.green "\n#{symbol.success} No problems found!\n"
             problems = false
         else
             problems = true
