@@ -37,8 +37,9 @@ module.exports = (grunt) ->
 
         copy:
             publish:
-                src: '<%= target_dir %>'
-                dest: '.'
+                cwd: '<%= target_dir %>'
+                src: '**/*.js'
+                dest: './'
 
     grunt.loadTasks 'tasks/'
     grunt.loadNpmTasks 'grunt-codo'
@@ -47,10 +48,10 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-copy'
 
-    grunt.registerTask 'dist', ['clean:dist', 'coffeelint:dist', 'coffee:dist']
+    grunt.registerTask 'dist', ['clean:dist', 'coffee:dist']
     grunt.registerTask 'doc', ['doc:rules', 'codo']
     grunt.registerTask 'publish', ['copy:publish', 'clean:publish']
 
-    grunt.registerTask 'default', ['dist', 'doc']
+    grunt.registerTask 'default', ['coffeelint', 'dist', 'doc']
 
     return
