@@ -33,15 +33,23 @@ module.exports = (grunt) ->
 
         clean:
             dist: ['<%= target_dir %>']
+            publish: ['<%= src_dir %>', '<%= target_dir %>']
+
+        copy:
+            publish:
+                src: '<%= target_dir %>'
+                dest: '.'
 
     grunt.loadTasks 'tasks/'
+    grunt.loadNpmTasks 'grunt-codo'
     grunt.loadNpmTasks 'grunt-coffeelint'
     grunt.loadNpmTasks 'grunt-contrib-clean'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
-    grunt.loadNpmTasks 'grunt-codo'
+    grunt.loadNpmTasks 'grunt-contrib-copy'
 
     grunt.registerTask 'dist', ['clean:dist', 'coffeelint:dist', 'coffee:dist']
     grunt.registerTask 'doc', ['doc:rules', 'codo']
+    grunt.registerTask 'publish', ['copy:publish', 'clean:publish']
 
     grunt.registerTask 'default', ['dist', 'doc']
 
