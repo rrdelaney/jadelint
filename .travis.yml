@@ -10,11 +10,12 @@ before_script:
 
 script:
     - npm test
-    - grunt
 
 after_success:
     - 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
+    - grunt doc
     - bash script/deploy
+    - grunt dist publish
 
 deploy:
     provider: npm
