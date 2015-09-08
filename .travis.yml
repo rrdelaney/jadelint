@@ -13,9 +13,9 @@ script:
 
 after_success:
     - 'cat ./coverage/lcov.info | ./node_modules/.bin/coveralls'
-    - grunt doc
+    - grunt dist doc
     - bash script/deploy
-    - grunt dist publish
+    - grunt publish
 
 deploy:
     provider: npm
