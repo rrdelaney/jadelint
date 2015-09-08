@@ -39,7 +39,8 @@ module.exports = (grunt) ->
             publish:
                 cwd: '<%= target_dir %>'
                 src: '**/*.js'
-                dest: './'
+                dest: ''
+                expand: true
 
     grunt.loadTasks 'tasks/'
     grunt.loadNpmTasks 'grunt-codo'
