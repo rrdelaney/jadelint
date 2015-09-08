@@ -1,5 +1,6 @@
 # [jadelint](http://ryandelaney.io/jadelint)
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/rrdelaney/jadelint?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Build Status](https://travis-ci.org/rrdelaney/jadelint.svg?branch=master)](https://travis-ci.org/rrdelaney/jadelint)
 [![Coverage Status](https://coveralls.io/repos/rrdelaney/jadelint/badge.svg?branch=master&service=github)](https://coveralls.io/github/rrdelaney/jadelint?branch=master)
 [![Dependency Status](https://david-dm.org/rrdelaney/jadelint.svg)](https://david-dm.org/rrdelaney/jadelint)
