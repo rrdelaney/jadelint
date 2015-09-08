@@ -20,7 +20,9 @@ rules = require './rules'
 #         exitCode = reporter.report()
 #         console.log reporter.log
 jadelint = (conf, reporter = new Reporter, callback = ->) ->
-    conf ?= try require "#{process.cwd()}/.jadelintrc"
+    dir = process.cwd()
+    conf ?= try require "#{dir}/.jadelintrc"
+    conf ?= (try require "#{dir}/.jadelintrc") while (dir += '/..'; '/' isnt fs.realpathSync dir)
     conf ?= {}
 
     through2.obj (file, _, cb) ->
