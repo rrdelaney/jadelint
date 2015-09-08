@@ -8,10 +8,12 @@ rules = require './rules'
 # Front function to call jadelint from
 # Will instantiate a appyl the config, lint, report, and then call a callback
 #
-# @option [Object] conf the jadelintrc object
-# @option [Reporter] reporter a reporter to use instead of the default reporter
-# @option [Function<Reporter>] callback will be called with the reporter after
+# @param [Object] conf the jadelintrc object
+# @param [Reporter] reporter a reporter to use instead of the default reporter
+# @param [Function<Reporter>] callback will be called with the reporter after
 #                                  linting is done
+#
+# @return a stream handler for vinyl file objects
 #
 # @example
 #     fs.src ['*.jade']

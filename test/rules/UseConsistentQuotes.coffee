@@ -3,25 +3,41 @@ rule = require "./../../src/rules/#{require('path').basename(__filename, '.coffe
 
 describe 'UseConsistentQuotes', ->
     it 'should catch statements across tags', ->
-        rule::reset()
-
         expect rule::validate """
         a(href="/api" thing='/docs')
         """
         .to.be.false
-        
-    it 'should accept same-style quotes', ->
-        rule::reset()
 
+    it 'should accept same-style quotes', ->
         expect rule::validate """
         a(href='/api' thing='/docs')
         """
         .to.be.true
 
-    it 'should do nothing for other elements', ->
-        rule::reset()
-
         expect rule::validate """
-        div(href='/css/myStyle.css' rel='stylesheet')
+        a(href="/api" thing="/docs")
         """
         .to.be.true
+
+    describe 'allow forcing of quotes', ->
+        it 'should validate single quotes', ->
+            expect rule::validate """
+            a(href='hey')
+            """, force: "'"
+            .to.be.true
+
+            expect rule::validate """
+            a(href='hey')
+            """, force: '"'
+            .to.be.false
+
+        it 'should validate double quotes', ->
+            expect rule::validate """
+            a(href="hey")
+            """, force: "'"
+            .to.be.false
+
+            expect rule::validate """
+            a(href="hey")
+            """, force: '"'
+            .to.be.true

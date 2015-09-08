@@ -27,7 +27,7 @@ class Reporter
         fileErrCount = 0
         fileWarnCount = 0
 
-        errTable = table errors.filter((err) -> err.level? and err.level isnt 'ignore').map (err) ->
+        errTable = table errors.filter((err) -> err.level? and err.level in ['warning', 'error']).map (err) ->
             {level, name, filename, line} = err
             if level is 'error' then fileErrCount++
             if level is 'warning' then fileWarnCount++
@@ -39,11 +39,11 @@ class Reporter
                 chalk.blue name
             ]
 
-        if filename and fileErrCount > 0 or fileWarnCount > 0 then @log += "\n#{chalk.underline filename}\n" else ''
+        if filename and fileErrCount > 0 or fileWarnCount > 0 then @log += "#{chalk.underline filename}\n" else ''
         @errCount += fileErrCount
         @warnCount += fileWarnCount
         @log += errTable
-        if fileErrCount isnt 0 and fileWarnCount isnt 0 then @log += '\n'
+        if fileErrCount > 0 or fileWarnCount > 0 then @log += '\n'
 
     # Reports all errors to the console
     report: ->

@@ -53,6 +53,7 @@ class Rule
         err.name = @name
         err.filename = @filename
         err.line = @node?.line
+        err.jadelint = true
         throw err
 
     # Cleans the quotes from a String
@@ -68,12 +69,14 @@ class Rule
     #
     # @param [String] nodeContent the jade source to create the node from
     # @return [Boolean] describes if the test passed or failed
-    validate: (nodeContent) ->
-        @node = (parse lex nodeContent).nodes[0]
+    validate: (nodeContent, conf = {}) =>
+        node = (parse lex nodeContent).nodes[0]
+        r = new @constructor 'testFilename', node, conf
 
         try
-            @check()
+            r.check()
         catch e
+            if not e.jadelint then throw e
             return false
 
         return true
