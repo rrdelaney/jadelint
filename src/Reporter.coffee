@@ -42,8 +42,8 @@ class Reporter
         if filename and fileErrCount > 0 or fileWarnCount > 0 then @log += "#{chalk.underline filename}\n" else ''
         @errCount += fileErrCount
         @warnCount += fileWarnCount
-        @log += errTable + '\n'
-        if fileErrCount > 0 or fileWarnCount > 0 then @log += '\n'
+        @log += errTable
+        if fileErrCount > 0 or fileWarnCount > 0 then @log += '\n\n'
 
     # Reports all errors to the console
     report: ->
