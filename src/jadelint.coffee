@@ -10,10 +10,9 @@ rules = require './rules'
 #
 # @param [Object] conf the jadelintrc object
 # @param [Reporter] reporter a reporter to use instead of the default reporter
-# @param [Function<Reporter>] callback will be called with the reporter after
-#                                  linting is done
+# @param [Function<Reporter>] callback will be called with the reporter after linting is done
 #
-# @return a stream handler for vinyl file objects
+# @return [Function] stream handler for vinyl file objects
 #
 # @example
 #     fs.src ['*.jade']
