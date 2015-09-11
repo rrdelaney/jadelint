@@ -23,14 +23,15 @@ jadelint = (conf, reporter = new Reporter, callback = ->) ->
     getDefaultConf = () ->
         def = {}
         dir = process.cwd()
-        while '/' isnt fs.realpathSync dir
+        lastDir = ''
+        while dir isnt lastDir
             try
                 for prop, val of JSON.parse fs.readFileSync "#{dir}/.jadelintrc"
                     def[prop] ?= val
 
-            dir += '/..'
-
-        def
+            lastDir = dir
+            dir = path.join dir, '..'
+        return def
 
     conf ?= getDefaultConf()
 
