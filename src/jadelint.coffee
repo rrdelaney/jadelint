@@ -31,7 +31,7 @@ jadelint = (conf, reporter = new Reporter, callback = ->) ->
 
             lastDir = dir
             dir = path.join dir, '..'
-        return def
+        def
 
     conf ?= getDefaultConf()
 
