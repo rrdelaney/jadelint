@@ -9,6 +9,6 @@ class NoXMLAttributeNamespace extends Rule
 
     check: ->
         for {name, val} in @node.attrs ? []
-            if name.match /\w+:\w+/g then @fail()
+            if name.match(/\w+:\w+/g) and name.split(':')[0] isnt 'xlink' then @fail()
 
 module.exports = NoXMLAttributeNamespace

@@ -8,6 +8,12 @@ describe 'NoXMLAttributeNamespace', ->
         """
         .to.be.false
 
+    it 'should pass xlink:href', ->
+        expect rule::validate """
+        use(xlink:href='/images/sprite.symbol.svg#test')
+        """
+        .to.be.true
+
     it 'should pass normal attributes', ->
         expect rule::validate """
         div(foo='bar')
