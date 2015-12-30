@@ -5,6 +5,8 @@
 [![Coverage Status](https://coveralls.io/repos/rrdelaney/jadelint/badge.svg?branch=master&service=github)](https://coveralls.io/github/rrdelaney/jadelint?branch=master)
 [![Dependency Status](https://david-dm.org/rrdelaney/jadelint.svg)](https://david-dm.org/rrdelaney/jadelint)
 
+## This project is no longer maintained
+
 Finds bad practices in your Jade
 
 [Demo](http://showterm.io/dfea6ec6a2bef2a4d5a56) |
